@@ -16,18 +16,14 @@
   <body>
     <div class="container" style="width:80rem;">
       <div class="row">
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center align-items-center mt-5">
           
-          <div class="card p-2">
-          <h2 class="text-center">Employee Registration Form</h2>
-            <form action="backend.php" method="post">
-              <p>
-                First Name
-                <input type="text" name="fname" class="form-control" required/>
-              </p>
-              <p>
-                Last Name
-                <input type="text" name="lname" class="form-control" required/>
+          <div class="card shadow p-3">
+          <h2 class="text-center">Head Of Department Registration Form</h2>
+            <form action="hregback.php" method="post">
+              <p class="mt-3">
+                HOD's Full Name
+                <input type="text" name="name" class="form-control" required/>
               </p>
               <p>
                 Department
@@ -42,58 +38,8 @@
                   <option value="Human Resource">Human Resource</option>
                   <option value="Finance">Finance</option>
                 </select>
-              </p>
-              <p>
-                Designation
-                <select class="form-select" name="designation" id="designation">
-                  <option value="">Choose</option>
-                  <option value="Manager">Manager</option>
-                  <option value="Coder">Coder</option>
-                  <option value="Tester">Tester</option>
-                  <option value="Data Scientist">Data Scientist</option>
-                </select>
-              </p>
-
-              <p>
-                Gender <br />
-                <input
-                  type="radio"
-                  class="form-check-input"
-                  name="gender"
-                  id="gender"
-                  value="male"
-                />Male
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="gender"
-                  id="gender"
-                  value="female"
-                />Female
-              </p>
-
-              <p class="g-3">
-                Mobile Number
-                <input
-                    class="col-auto"
-                  type="text"
-                  maxlength="4"
-                  value="+91"
-                  style="width: 3rem"
-                />
-                <input type="number" name="mob_no" maxlength="10" required/>
-              </p>
-              <p>
-                Address <br />
-                <textarea
-                  name="address"
-                  id="address"
-                  class="form-control"
-                  cols="30"
-                  rows="3"
-                  required
-                ></textarea>
-              </p>
+</p>
+              
               <p>
                 Email Address
                 <input

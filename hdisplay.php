@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee</title>
+    <title>HODs</title>
      <!-- Bootstrap CSS -->
      <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -17,27 +17,22 @@
 <body>
 
    <div class="container">
-
+    <h1 class="d-flex justify-content-center m-2">HODs Information</h1>
 
    <?php
         require_once 'db.php';
-        $query = "SELECT * FROM employees";
+        $query = "SELECT * FROM dept_head;";
         $result = $mysqli->query($query);
     ?>
     
     <div class="row table-responsive">
 
-    <table border="1" class="table table-hover">
+    <table border="1" class="table">
            <thead>
                 <tr>
-                    <th>Employee ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
+                    <th>HOD ID</th>
+                    <th>Full Name</th>
                     <th>Department</th>
-                    <th>Designation</th>
-                    <th>Gender</th>
-                    <th>Mobile Number</th>
-                    <th>Address</th>
                     <th>Email Address</th>
                 </tr>
             </thead>
@@ -46,18 +41,12 @@
             while($row = $result->fetch_assoc()){
         ?>
             <tr>
-                <td><?php echo $row['emp_id']  ?></td>
-                <td><?php echo $row['fname']  ?></td>
-                <td><?php echo $row['lname']  ?></td>
+                <td><?php echo $row['hid']  ?></td>
+                <td><?php echo $row['name']  ?></td>
                 <td><?php echo $row['department']  ?></td>
-                <td><?php echo $row['designation']  ?></td>
-                <td><?php echo $row['gender']  ?></td>
-                <td><?php echo $row['mob_no']  ?></td>
-                <td><?php echo $row['address']  ?></td>
                 <td><?php echo $row['email']  ?></td>
-                <td><button class="btn btn-danger btn-sm"><a href="delete.php?emp_id=<?php echo $row['emp_id']?>">DELETE</a></button></td>
-                <td><button class="btn btn-info btn-sm"><a href="update.php?emp_id=<?php echo $row['emp_id']?>">UPDATE</a></button></td>
-            </tr>
+                <td><button class="btn btn-danger btn-sm"><a href="hdelete.php?hid=<?php echo $row['hid']?>">DELETE</a></button></td>
+             </tr>
         <?php
             }
         ?>  
