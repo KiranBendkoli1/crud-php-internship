@@ -18,7 +18,7 @@
 
    <div class="container">
 
-
+   <h1 class="d-flex justify-content-center m-2">Employees Information</h1>
    <?php
         require_once 'db.php';
         $query = "SELECT * FROM employees";

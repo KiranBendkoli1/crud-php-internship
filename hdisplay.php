@@ -46,6 +46,7 @@
                 <td><?php echo $row['department']  ?></td>
                 <td><?php echo $row['email']  ?></td>
                 <td><button class="btn btn-danger btn-sm"><a href="hdelete.php?hid=<?php echo $row['hid']?>">DELETE</a></button></td>
+                <td><button class="btn btn-info btn-sm"><a href="hupdate.php?hid=<?php echo $row['hid']?>">UPDATE</a></button></td>
              </tr>
         <?php
             }
