@@ -13,18 +13,49 @@
       crossorigin="anonymous"
     />
 
+    <style>
+        .myrow{
+            display:flex;
+            margin:1rem;
+            justify-content:space-around;
+        }
+        .myrow .btn{
+            margin-top:0.5rem;
+            height:fit-content;
+        }
+    </style>
 </head>
 <body>
 
    <div class="container">
 
-   <h1 class="d-flex justify-content-center m-2">Employees Information</h1>
+   <div class="myrow">
+    <h1>Employees Information</h1>
+    <a href="registration.php" class="btn btn-sm btn-primary">Register</a>
+   </div>
    <?php
+        
         require_once 'db.php';
-        $query = "SELECT * FROM employees";
-        $result = $mysqli->query($query);
-    ?>
-    
+
+        // fetching all records of employees
+        $query1 = "SELECT * FROM employees";
+        $result = $mysqli->query($query1);
+
+        // function to delete record of emp_id
+        function delete($mysqli,$emp_id){
+            $query = "DELETE FROM employees WHERE emp_id=$emp_id";
+
+            if($mysqli->query($query)){
+                echo "<script> alert('Record Deleted') </script>";
+                header("Location: display.php"); // redirecting to refresh page
+            }else{
+                echo "<script> alert('Error Deleting Record') </script>";
+                header("Location: display.php"); // redirecting to refresh page
+            }
+        }
+
+?>
+  
     <div class="row table-responsive">
 
     <table border="1" class="table table-hover">
@@ -55,10 +86,14 @@
                 <td><?php echo $row['mob_no']  ?></td>
                 <td><?php echo $row['address']  ?></td>
                 <td><?php echo $row['email']  ?></td>
-                <td><button class="btn btn-danger btn-sm"><a href="delete.php?emp_id=<?php echo $row['emp_id']?>">DELETE</a></button></td>
-                <td><button class="btn btn-info btn-sm"><a href="update.php?emp_id=<?php echo $row['emp_id']?>">UPDATE</a></button></td>
+                <td><a style="color:white" class="btn btn-danger btn-sm" href="display.php?set=true">Delete</a></td>
+                <td><a style="color:white" class="btn btn-info btn-sm" href="registration.php?update=true"<?php echo $row['emp_id']?>">Update</a></td>
             </tr>
         <?php
+            if(isset($_GET['set'])){
+                // if variable is set then call delete() with parameter connection object and current emp_id
+                delete($mysqli,$row['emp_id']);
+                }
             }
         ?>  
     </table>
