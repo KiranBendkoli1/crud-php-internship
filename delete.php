@@ -7,8 +7,10 @@
     $query = "DELETE FROM employees WHERE emp_id=$emp_id";
 
     if($mysqli->query($query)){
-        echo "Record Deleted";
+        echo "<script> alert('Record Deleted') </script>";
+        header("Location: display.php");
     }else{
-        echo "Error Deleting Record";
+        echo "<script> alert('Error Deleting Record') </script>";
+        header("Location: display.php");
     }
 ?>

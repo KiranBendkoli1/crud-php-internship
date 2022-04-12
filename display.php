@@ -43,14 +43,14 @@
 
         // function to delete record of emp_id
         function delete($mysqli,$emp_id){
-            $query = "DELETE FROM employees WHERE emp_id=$emp_id";
+            $query = "DELETE FROM employees WHERE emp_id='$emp_id'";
 
             if($mysqli->query($query)){
                 echo "<script> alert('Record Deleted') </script>";
-                header("Location: display.php"); // redirecting to refresh page
+                // header("Location: display.php"); // redirecting to refresh page
             }else{
                 echo "<script> alert('Error Deleting Record') </script>";
-                header("Location: display.php"); // redirecting to refresh page
+                // header("Location: display.php"); // redirecting to refresh page
             }
         }
 
@@ -87,12 +87,14 @@
                 <td><?php echo $row['address']  ?></td>
                 <td><?php echo $row['email']  ?></td>
                 <td><a style="color:white" class="btn btn-danger btn-sm" href="display.php?set=true">Delete</a></td>
-                <td><a style="color:white" class="btn btn-info btn-sm" href="registration.php?update=true"<?php echo $row['emp_id']?>">Update</a></td>
+                <td><a style="color:white" class="btn btn-info btn-sm" href="registration.php?update=true&emp_id=<?php echo $row['emp_id']?>">Update</a></td>
             </tr>
         <?php
-            if(isset($_GET['set'])){
-                // if variable is set then call delete() with parameter connection object and current emp_id
-                delete($mysqli,$row['emp_id']);
+                if(isset($_GET['set'])){
+                    // if variable is set then call delete() with parameter connection object and current emp_id
+                    delete($mysqli,$row['emp_id']);
+                    unset($_GET['set']);
+                    echo "<script> window.location.href='display.php' </script>";
                 }
             }
         ?>  
